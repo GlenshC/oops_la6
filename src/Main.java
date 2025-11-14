@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Main extends JFrame {
     public static void main(String[] args) {
         try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); }
-        catch (Exception _) {}
+        catch (Exception e) {}
         new Main();
     }
     public Main() {
@@ -22,7 +22,7 @@ public class Main extends JFrame {
             Image scaledImg = img.getScaledInstance(140, 140, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImg);
             image = new JLabel(scaledIcon);
-        } catch (Exception _) {}
+        } catch (Exception e) {}
 
         JPanel main_panel = new JPanel();
         main_panel.setLayout(new GridBagLayout());
