@@ -2,7 +2,7 @@
 
 Java Swing GUI. Built using Java and OOPs.  
 This README was prepared for the ease of use of my professor.  
-Developed and tested using **Microsoft OpenJDK 17**
+This branch was developed and tested using **Amazon Corretto 23**
 
 **Author:** Glenshayne Belarmino (Exception #3)– [@GlenshC](https://github.com/GlenshC)
 
