@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
@@ -23,57 +22,59 @@ public class CharRMGUI extends JFrame {
         super("Character Remover");
         str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
-        setSize(400, 250);
-        setLocationRelativeTo(null); // Center window
-
-        Border main_border = BorderFactory.createEmptyBorder(5, 5, 5, 5);
-        JPanel main_panel = new JPanel();
-        main_panel.setLayout(new GridLayout(3, 1, 10, 10)); // rows, cols, hgap, vgap
-        main_panel.setBorder(main_border);
-
-        JPanel btn_panel = new JPanel();
-        btn_panel.setLayout(new GridLayout(1, 2, 10, 10)); // rows, cols, hgap, vgap
-        btn_panel.setBorder(main_border);
-
-        JPanel box_panel = new JPanel();
-        box_panel.setLayout(new GridLayout(1, 3, 10, 10)); // rows, cols, hgap, vgap
-        box_panel.setBorder(main_border);
-
-        JPanel label_panel = new JPanel();
-        label_panel.setLayout(new GridLayout(1, 1, 10, 10)); // rows, cols, hgap, vgap
-        label_panel.setBorder(main_border);
-
-        str_label = new JLabel();
-        str_label.setHorizontalAlignment(JLabel.CENTER);
-        str_label.setVerticalAlignment(JLabel.CENTER);
-        str_label.setText(str);
-
-        label_panel.add(str_label);
-
-        JButton removeBtn = new JButton("Remove");
-        JButton restoreBtn = new JButton("Restore");
-        removeBtn.addActionListener(this::removeClick);
-        restoreBtn.addActionListener(this::restoreClick);
-
-        btn_panel.add(removeBtn);
-        btn_panel.add(restoreBtn);
-
+        str_label = new JLabel(str);
+        
         vowelsBox = new JCheckBox("Vowels");
         consonantsBox = new JCheckBox("Consonants");
         numbersBox = new JCheckBox("Numbers");
+        
+        JButton remove_btn = new JButton("Remove");
+        JButton restore_btn = new JButton("Restore");
+        
+        str_label.setName("textLabel");
+        vowelsBox.setName("vowelCheckbox");
+        consonantsBox.setName("consonantCheckbox");
+        numbersBox.setName("numberCheckbox");
+        remove_btn.setName("removeButton");
+        restore_btn.setName("restoreButton");
 
-        box_panel.add(vowelsBox);
-        box_panel.add(consonantsBox);
-        box_panel.add(numbersBox);
+        remove_btn.addActionListener(this::removeClick);
+        restore_btn.addActionListener(this::restoreClick);
 
-        main_panel.add(label_panel);
-        main_panel.add(box_panel);
-        main_panel.add(btn_panel);
+        JPanel checkbox_panel = new JPanel();
+        checkbox_panel.setLayout(new BoxLayout(checkbox_panel, BoxLayout.X_AXIS));
+        checkbox_panel.add(vowelsBox);
+        checkbox_panel.add(consonantsBox);
+        checkbox_panel.add(numbersBox);
+
+        JPanel btn_panel = new JPanel();
+        btn_panel.setLayout(new GridLayout(1, 2, 10, 10));
+        btn_panel.add(remove_btn);
+        btn_panel.add(restore_btn);
+
+        JPanel main_panel = new JPanel();
+        main_panel.setLayout(new GridBagLayout());
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0;
+        gbc.weighty = 0;
+        main_panel.add(str_label, gbc);
+        gbc.gridy = 1;
+        main_panel.add(checkbox_panel, gbc);
+        gbc.gridy = 2;
+        main_panel.add(btn_panel, gbc);
 
         add(main_panel);
+
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setSize( 300,140);
+        setLocationRelativeTo(null);
         setVisible(true);
 
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
@@ -81,10 +82,8 @@ public class CharRMGUI extends JFrame {
                 if (getFrames().length == 0) {System.exit(0); }
             }
         });
-
     }
 
-    // --- Event handlers ---
     private void removeClick(ActionEvent e)
     {
         String targ = "[";
