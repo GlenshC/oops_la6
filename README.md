@@ -6,7 +6,7 @@ Developed and tested using **OpenJDK 24**
 
 **Author:** Glenshayne Belarmino – [@GlenshC](https://github.com/yourhandle)
 
-![Banner](path)
+![Banner](docs/banner1.png)
 
 ---
 ## ✅ Recommended Usage
@@ -19,9 +19,9 @@ Developed and tested using **OpenJDK 24**
 ## 📸 Preview
 
 <!-- Replace with actual paths -->
-| Description          | Image                           |
-|----------------------|---------------------------------|
-| Main UI              | ![Main](path)    |
-| Character Remover    | ![CharRMGUI](path) |
-| Food Ordering System | ![FoodMenuGUI](path)            |
-| Pasword Validator    | ![PasswordValidatorGUI](path)   |
+| Description          | Image                                                  |
+|----------------------|--------------------------------------------------------|
+| Main UI              | ![Main](docs/Main.png)                                 |
+| Character Remover    | ![CharRMGUI](docs/CharRMGUI.png)                       |
+| Food Ordering System | ![FoodMenuGUI](docs/FoodMenuGUI.png)                   |
+| Pasword Validator    | ![PasswordValidatorGUI](docs/PasswordValidatorGUI.png) |
