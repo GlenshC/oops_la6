@@ -2,7 +2,7 @@
 
 Java Swing GUI. Built using Java and OOPs.  
 This README was prepared for the ease of use of my professor.  
-Developed and tested using **OpenJDK 24**
+Developed and tested using **Oracle OpenJDK 24**
 
 **Author:** Glenshayne Belarmino (Exception #3)– [@GlenshC](https://github.com/GlenshC)
 
