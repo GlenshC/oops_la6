@@ -9,7 +9,7 @@ public class FoodMenuGUI extends JFrame {
             new FoodItem("Pizza", 100),
             new FoodItem("Burger", 80),
             new FoodItem("Fries", 65),
-            new FoodItem("SoftDrinks", 55),
+            new FoodItem("Soft drinks", 55),
             new FoodItem("Tea", 50),
             new FoodItem("Sundae", 40)
     );
@@ -54,15 +54,20 @@ public class FoodMenuGUI extends JFrame {
 
         JButton order_btn = new JButton("Order");
         order_btn.addActionListener(this::order_click);
+        order_btn.setName("btnOrder");
 
         JRadioButton d_0 = new JRadioButton("None");
         d_0.addActionListener(e -> discount = 0);
+        d_0.setName("rbNone");
         JRadioButton d_5 = new JRadioButton("5% Off");
         d_5.addActionListener(e -> discount = 0.05f);
+        d_5.setName("rb5");
         JRadioButton d_10 = new JRadioButton("10% Off");
         d_10.addActionListener(e -> discount = 0.1f);
+        d_10.setName("rb10");
         JRadioButton d_15 = new JRadioButton("15% Off");
         d_15.addActionListener(e -> discount = 0.15f);
+        d_15.setName("rb15");
 
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(d_0);
@@ -157,10 +162,19 @@ public class FoodMenuGUI extends JFrame {
             setLayout(new GridBagLayout());
             setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
+            String e_name = "c";
+            String[] name_parts = name.split(" ");
+            for (String s : name_parts)
+            {
+                e_name +=  s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
+            }
+            setName(e_name);
+//            System.out.println(e_name);
+
             // checkbox + (label + label)
             checkbox_btn = new JCheckBox();
 
-            Border border_focused = BorderFactory.createLineBorder(Color.GRAY);
+            Border border_focused = BorderFactory.createDashedBorder(Color.GRAY);
             Border border_unfocused = BorderFactory.createEmptyBorder(1, 1, 1, 1);
 
             JPanel main_panel = new JPanel();

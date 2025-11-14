@@ -18,6 +18,7 @@ public class PasswordValidatorGUI extends JFrame {
     {
         super("Password Validator");
         password = new JTextField();
+        password.setName("passwordTextField");
         password.getDocument().addDocumentListener(
                 new DocumentListener() {
                     @Override public void insertUpdate(DocumentEvent e) {onChangePassword();}
@@ -27,6 +28,7 @@ public class PasswordValidatorGUI extends JFrame {
         );
 
         status = new JLabel();
+        status.setName("statusLabel");
         status.setText("Passwords must be 8 characters long");
         status.setForeground(Color.RED);
 
