@@ -42,7 +42,8 @@ public class CharRMGUI extends JFrame {
         restore_btn.addActionListener(this::restoreClick);
 
         JPanel checkbox_panel = new JPanel();
-        checkbox_panel.setLayout(new BoxLayout(checkbox_panel, BoxLayout.X_AXIS));
+        checkbox_panel.setLayout(new FlowLayout(FlowLayout.CENTER, 0,0));
+        checkbox_panel.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         checkbox_panel.add(vowelsBox);
         checkbox_panel.add(consonantsBox);
         checkbox_panel.add(numbersBox);
