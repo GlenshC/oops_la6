@@ -90,6 +90,7 @@ public class CharCounter extends JFrame {
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(400, 400);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
