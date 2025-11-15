@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class NumCounter extends JFrame {
+    public static final String gui_name = "Number Counter";
     private int value;
 
     public NumCounter () {
@@ -49,4 +50,5 @@ public class NumCounter extends JFrame {
     public static void main(String[] args) {
         new NumCounter();
     }
+
 }

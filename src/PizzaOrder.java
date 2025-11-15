@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Vector;
 
 public class PizzaOrder extends JFrame {
+    public static final String gui_name = "Pizza Ordering System";
     private final String[] sizes = { "Small", "Medium", "Large" };
     private final String[] toppings = {"Mushrooms", "Pepperoni", "Onions"};
 
@@ -69,8 +70,10 @@ public class PizzaOrder extends JFrame {
     }
 
     public static void main(String[] args) {
-        try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); }
-        catch (Exception _) {}
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception _) {
+        }
 
         new PizzaOrder();
     }

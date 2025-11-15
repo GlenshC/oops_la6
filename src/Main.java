@@ -1,7 +1,12 @@
+import java.lang.reflect.Field;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class Main extends JFrame {
@@ -35,12 +40,18 @@ public class Main extends JFrame {
         main_panel.setLayout(new GridBagLayout());
         main_panel.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
 
+        ArrayList<Class<? extends JFrame>> class_list = new ArrayList<>(
+            Arrays.asList(
+                    CharCounter.class,
+                    LoginForm.class,
+                    NumCounter.class,
+                    PizzaOrder.class
+            )
+        );
+
         JButton char_rm_btn =  new JButton("Character Remover");
         JButton food_menu_btn = new JButton("Food Ordering System");
         JButton pwd_validator_btn = new JButton("Password Validator");
-        JButton char_counter_btn = new JButton("Character Counter");
-        JButton num_counter_btn = new JButton("Number Counter");
-        JButton pizza_order_btn = new JButton("Pizza Ordering System");
 
         JPanel my_gui_panel = new JPanel();
         my_gui_panel.setLayout(new GridBagLayout());
@@ -53,9 +64,6 @@ public class Main extends JFrame {
         char_rm_btn.addActionListener(e -> {new CharRMGUI();});
         food_menu_btn.addActionListener(e -> {new FoodMenuGUI();});
         pwd_validator_btn.addActionListener(e -> {new PasswordValidatorGUI();});
-        char_counter_btn.addActionListener(e -> new CharCounter());
-        num_counter_btn.addActionListener(e -> new NumCounter());
-        pizza_order_btn.addActionListener(e -> new PizzaOrder());
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 0, 5, 0);
@@ -63,13 +71,14 @@ public class Main extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         my_gui_panel.add(char_rm_btn,gbc);
-        other_gui.add(char_counter_btn,gbc);
         gbc.gridy = 1;
         my_gui_panel.add(food_menu_btn,gbc);
-        other_gui.add(num_counter_btn,gbc);
         gbc.gridy = 2;
         my_gui_panel.add(pwd_validator_btn,gbc);
-        other_gui.add(pizza_order_btn,gbc);
+        for (int i =0; i < class_list.size(); i++) {
+            gbc.gridy = i;
+            other_gui.add(new MyButton(class_list.get(i)),gbc);
+        }
 
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -88,8 +97,27 @@ public class Main extends JFrame {
         if (image != null) add(image, gbc);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(477, 319);
+        setSize(477, 343);
         setLocationRelativeTo(null);
         setVisible(true);
+    }
+
+    public static class MyButton extends JButton {
+        public MyButton(Class<? extends JFrame> cls) {
+            super();
+            String label = "btn";
+            try {
+                Field field = cls.getDeclaredField("gui_name");
+                label = (String) field.get(null);
+            } catch (Exception _) {}
+
+            setText(label);
+            addActionListener(e -> {
+                try {
+                    cls.getDeclaredConstructor().newInstance();
+                } catch (Exception _) {}
+            });
+
+        }
     }
 }

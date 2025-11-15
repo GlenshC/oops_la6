@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class CharRMGUI extends JFrame {
-
+public class CharRMGUI extends JFrame  {
+    public static final String gui_name = "Character Remover";
     private final JCheckBox vowelsBox;
     private final JCheckBox consonantsBox;
     private final JCheckBox numbersBox;
@@ -108,4 +108,5 @@ public class CharRMGUI extends JFrame {
         str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         str_label.setText(str);
     }
+
 }

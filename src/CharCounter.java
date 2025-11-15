@@ -6,7 +6,8 @@ import javax.swing.text.DocumentFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class CharCounter extends JFrame {
+public class CharCounter extends JFrame  {
+    public static final String gui_name = "Character Counter";
     JTextArea   text_area;
     JTextField  char_field;
     JLabel count;

@@ -4,7 +4,8 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.*;
 
-public class PasswordValidatorGUI extends JFrame {
+public class PasswordValidatorGUI extends JFrame  {
+    public static final String gui_name = "Password Validator";
     private final JTextField password;
     private final JLabel status;
 
@@ -96,4 +97,5 @@ public class PasswordValidatorGUI extends JFrame {
         }
         return false;
     }
+
 }

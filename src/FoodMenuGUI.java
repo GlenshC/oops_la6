@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.util.List;
 
 public class FoodMenuGUI extends JFrame {
+    public static final String gui_name = "Food Ordering System";
     private static final List<FoodItem> food_list = List.of(
             new FoodItem("Pizza", 100),
             new FoodItem("Burger", 80),
@@ -139,7 +140,7 @@ public class FoodMenuGUI extends JFrame {
         JOptionPane.showMessageDialog(null,
                 String.format("The total price is Php %.2f",  total),
                 "Bill",
-                JOptionPane.INFORMATION_MESSAGE
+                JOptionPane.PLAIN_MESSAGE
         );
     }
 
@@ -169,9 +170,7 @@ public class FoodMenuGUI extends JFrame {
                 e_name +=  s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
             }
             setName(e_name);
-//            System.out.println(e_name);
 
-            // checkbox + (label + label)
             checkbox_btn = new JCheckBox();
 
             Border border_focused = BorderFactory.createDashedBorder(Color.GRAY);
@@ -235,4 +234,5 @@ public class FoodMenuGUI extends JFrame {
             });
         }
     }
+
 }
