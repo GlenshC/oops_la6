@@ -61,12 +61,5 @@ public class Main extends JFrame {
         setSize(320, 175);
         setLocationRelativeTo(null);
         setVisible(true);
-
-       addMouseListener(new  MouseAdapter() {
-           @Override
-           public void mouseClicked(MouseEvent e) {
-               System.out.printf("Size: %d, %d", getSize().width, getSize().height);
-           }
-       });
     }
 }
